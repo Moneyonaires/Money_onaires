@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="The only way to ESCAPE is to become RICH! Become wealthy in the QUICKEST way possible by entering the GREATEST EDUCATIONAL PLATFORM ON EARTH!">
+    <title>Money_onaires</title>
+    <link rel="sitemap" type="application/xml" href="https://{moneyonaires sitemap}/sitemap.xml" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#054708"> 
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="/ms-icon-150x150.png">
+    <meta name="msapplication-TileImage" content="/ms-icon-310x310.png">
+    <meta name="msapplication-TileImage" content="/ms-icon-70x70.png">
+    <meta name="theme-color" content="#054708">
+    <meta property="og:image" content="/AssetFlow_Open_Graph_Image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:title" content="Money_onaires" />
+    <meta property="og:description" content="Become wealthy in the QUICKEST way possible by entering the GREATEST EDUCATIONAL PLATFORM ON EARTH!" />
+    <meta property="og:url" content="https://{website link}/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Money_onaires">
+    <meta name="twitter:description" content="The only way to ESCAPE is to become RICH! Become wealthy in the QUICKEST way possible by entering the GREATEST EDUCATIONAL PLATFORM ON EARTH!">
+    <meta name="twitter:image" content="/x-icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'TNR'; /* Times New Roman font */
+            src: url('times-new-roman-italic.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        header {
+            background-color: #171419;/* black */
+            color: #c5aa8b;/* gold */
+        }
+
+        body {
+            background-color: #c5aa8b;/* gold */
+            color: #49392f;/* brown */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin: 0;
+            flex-grow: 1;
+        }
+        h3 {
+            font-size: 25px;
+            margin: 0;
+            flex-grow: 1;
+        }
+        
+        h4 {
+            font-size: 15px;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+    .glow-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #ff7f00;
+        color: #FFFFFF;
+        border-color: #49392f;
+        border-radius: 10px;
+        font-family: 'TNR', sans-serif;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease; 
+    }
+
+    .glow-button:hover {
+        box-shadow: 0 0 15px #A52A2A, 0 0 30px #A52A2A; 
+        transform: scale(1.05);
+    }
+
+    .slideshow-container {
+        position: relative;
+        width: 100%; 
+        max-width: 800px; 
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .slideshow {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: calc(100% * 5); /* Update this to match the number of images */
+    }
+
+    .slideshow img {
+        width: 100%; 
+        max-width: 800px; 
+        flex-shrink: 0; 
+    }
+
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+        border-radius: 50%;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    img {
+        height: auto;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+        
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+        
+    #overlay img {
+        width: auto;
+        height: 80%;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+    }
+
+    .info-button {
+      width: 40px;
+      height: 40px;
+      background-color: #49392f;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    .info-button:hover {
+      background-color: #171419;
+    }
+
+    #disclaimer-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    #disclaimer-overlay .content {
+      background-color: #49392f;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    #disclaimer-overlay button {
+      padding: 10px 20px;
+      background-color: #171419;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    #disclaimer-overlay button:hover {
+      background-color: #49392f;
+    }
+
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+        text-align: center;
+        margin: 10px 0; 
+    }
+}
+    </style>
+</head>
+
+<header>
+<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; vertical-align: middle;">
+        <img src="MONEY_ONAIRES.png" alt="Moneyonaires Logo" style="width: 10vw; height: auto;">
+        <center><h1>Money_onaires</h1></center>
+        <img src="realworldlogo.webp" alt="Real World Logo" style="width: 10vw; height: auto;">
+</div>
+<div style="display: flex; justify-content: center; padding: 10px;">
+<button onclick="window.location.href='https://www.jointherealworld.com/?a=nbghtghwph';" class="glow-button" style="width: 100vw;">
+Tap Here To View Original Website
+</button>
+</div>
+</header>
+<br>    
+<body>
+    <h2>THE ONLY WAY TO ESCAPE IS TO BECOME RICH!</h2>
+    <div>
+    <video style="width: 60vw; height:auto; border-radius: 10px; border-color: #49392f;" controls>
+    <source src="TheSuccessors.mp4" type="video/mp4">
+    <h2 style="color: #DC143C;">RESIST!</h2> The matrix is stopping you from seeing this video. <h2 style="color: #DC143C;">RESIST!</h2>
+    </video>
+    </div>
+<button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
+   Join The Real World 
+</button>
+<br>
+<!--<h2>Here's what the haters say:</h2>
+<div class="slideshow-container">
+  <div class="slideshow">
+    <img src="hater_1_image.png" alt="Image 1">
+    <img src="image2.jpg" alt="Image 2">
+    <img src="image3.jpg" alt="Image 3">
+    <img src="image4.jpg" alt="Image 4">
+    <img src="image5.jpg" alt="Image 5">
+  </div>
+  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+<script>
+  let currentIndex = 0; // Current slide index
+  const slides = document.querySelector('.slideshow');
+  const totalImages = document.querySelectorAll('.slideshow img').length;
+  let autoSlideInterval;
+
+  function updateSlide(index) {
+    const slideWidth = slides.offsetWidth / totalImages;
+    slides.style.transform = `translateX(-${index * slideWidth}px)`;
+  }
+
+  function moveSlide(direction) {
+    clearInterval(autoSlideInterval); // Pause the auto-slide temporarily
+    currentIndex += direction;
+
+    // Wrap around the slides
+    if (currentIndex < 0) currentIndex = totalImages - 1;
+    if (currentIndex >= totalImages) currentIndex = 0;
+
+    updateSlide(currentIndex);
+
+    // Restart auto-sliding after a delay
+    setTimeout(startAutoSlide, 5000);
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalImages; // Loop back to first slide
+      updateSlide(currentIndex);
+    }, 3000); // 3 seconds
+  }
+
+  // Start the slideshow automatically
+  startAutoSlide();
+</script>
+<br>
+<br>
+<h2>And here's what the students replied:</h2>-->
+<br>
+<div style="display: flex; padding: 20px;">
+  <div style="text-align: left; padding: 20px; color: #c5aa8b; background-color: #171419; border-radius: 15px;">
+    <h2 style="margin: 0;">The Future of Education</h2>
+    <h3 style="font-weight: normal; margin: 10px 0;">
+        University education does not teach you what is arguably the most important skill for living a good life.<br><br>
+        <b style="color: #ff7f00;">How to make money online.</b><br><br>
+        If you are making less than $10k a month online, you <b>NEED</b> <a href="https://www.jointherealworld.com/checkout?a=nbghtghwph" style="color: #ff7f00;">THE REAL WORLD.</a><br><br>
+        Learn from real millionaires who teach you how to make money using techniques that work TODAY!
+        <br>
+        <center><button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
+            Join The Real World 
+        </button></center>
+    </h3>
+  </div>
+</div>
+<br>
+<div style="display: flex; justify-content: flex-end; padding: 20px;">
+  <div style="text-align: left; padding: 20px; color: #171419; background-color: #49392f; border-radius: 15px;">
+    <h2 style="margin: 0;">The Real World has:</h2>
+    <h3 style="font-weight: normal; margin: 10px 0;">
+        - Over 100,000+ returning students <b>every month</b><br>
+        - New and improved course lessons updated at 8am <b>every day</b><br>
+        - Huge success stories being posted <b>every minute</b><br>
+        - A network of students helping each other out <b>every second</b><br>
+        <br>
+        And the list goes on...
+        <br>
+        <center><button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
+            Join The Real World 
+        </button></center>
+    </h3>
+  </div>
+</div>
+<br>
+  <div class="info-button" onclick="openDisclaimer()">
+    i
+  </div>
+  <u><h2 style="color: #49392f; margin: 0;">Success Stories</h2></u>
+<div id="disclaimer-overlay" onclick="closeDisclaimer(event)" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center; flex-direction: column;">
+  <div class="content" style="background-color: #49392f; color: #fff; padding: 20px; border-radius: 10px; max-width: 90%; text-align: center;">
+    <h2>Disclaimer</h2>
+    <p>The images for the success story section are screenshots that were previously taken and then gathered. This is why the timing won't match up according to the sequence.</p>
+    <button onclick="closeDisclaimer(event)" style="padding: 10px 20px; background-color: #171419; color: white; border: none; border-radius: 5px; font-size: 16px;">Close</button>
+  </div>
+</div>
+
+<script>
+  // Open the disclaimer overlay
+  function openDisclaimer() {
+    document.getElementById('disclaimer-overlay').style.display = 'flex';
+  }
+
+  // Close the disclaimer overlay if the background (overlay) is clicked
+  function closeDisclaimer(event) {
+    const overlay = document.getElementById('disclaimer-overlay');
+    if (event.target === overlay || event.target.tagName === 'BUTTON') {
+      overlay.style.display = 'none';
+    }
+  }
+</script>
+<br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student1.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student2.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student3.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student4.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student5.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student6.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student7.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student8.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student9.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student10.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student11.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student12.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student13.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student14.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student15.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student16.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student17.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student18.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student19.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student20.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student21.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student22.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student23.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student24.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student25.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student26.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student27.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="student28.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student29.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    <img src="student30.png" alt="Success Story image" style="width: 30vw; height: auto;">
+    </div><br>
+<!--Add More Here-->
+
+<div id="overlay" onclick="closeOverlay(event)" style="display: none; flex-direction: column; justify-content: center; align-items: center; position: fixed; margin-bottom: 10px;">
+    <img src="" alt="Enlarged Image" id="enlarged-image">
+    <br>
+    <button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
+        Join The Real World 
+    </button>
+</div>
+<script>
+    // Select all original images
+    const images = document.querySelectorAll('img');
+    const overlay = document.getElementById('overlay');
+    const enlargedImage = document.getElementById('enlarged-image');
+
+    // Function to open overlay with the clicked image
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        enlargedImage.src = img.src; // Duplicate the clicked image
+        overlay.style.display = 'flex'; // Show the overlay
+      });
+    });
+
+    // Function to close overlay
+    function closeOverlay(event) {
+    const overlay = document.getElementById('overlay');
+    if (event.target === overlay) {
+        overlay.style.display = 'none'; // Hide overlay when clicking outside the image or button
+        }
+    }
+</script>
+</body>
+<footer style="color: #c5aa8b; background-color: #171419;">
+    <h2>Money_onaires may be an affiliate for some of the organisations listed on this website. This means that Money_onaires may receive a small monetary amount for any purchases that you make.<br><br>
+The content provided on this website may partially or wholely be the property of Money_onaires or its partners. Images and logos may be subject to copyright.<br><br></h2>
+    <p>&copy; 2024 - 2025 Money_onaires. All rights reserved.</p>
+</footer>
+</html>
