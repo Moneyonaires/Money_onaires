@@ -468,15 +468,48 @@ Tap Here To View Original Website
 </script>
 <script type="text/javascript">
   (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6717b7abc49f11faea541756' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production'
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function() {
+      window.voiceflow.chat.load({
+        verify: { projectID: '6717b7abc49f11faea541756' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production'
+      }).then(() => {
+        const chat = window.voiceflow.chat.proactive;
+
+        // First Message after 3 seconds
+        setTimeout(() => {
+          chat.push({
+            type: 'text',
+            payload: { message: 'We only take payments with crypto now.' }
+          });
+        }, 3000);
+
+        // Second Message after 6 seconds
+        setTimeout(() => {
+          chat.push({
+            type: 'text',
+            payload: { message: 'I can guide you on how to convert your currency into crypto, if you would like.' }
+          });
+        }, 6000);
+
+        // Remove First Two Messages after 15 seconds
+        setTimeout(() => {
+          chat.clear(); // Clears the first two messages
+        }, 15000);
+
+        // Third (Last) Message after 20 seconds
+        setTimeout(() => {
+          chat.push({
+            type: 'text',
+            payload: { message: "I'm here if you have any questions" }
+          });
+        }, 20000);
+      });
+    };
+    v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
+    v.type = "text/javascript"; 
+    s.parentNode.insertBefore(v, s);
   })(document, 'script');
 </script>
 </body>
