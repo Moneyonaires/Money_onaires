@@ -236,6 +236,21 @@
       background-color: #49392f;
     }
 
+    #loadingMessage {
+        display: none;
+        position: fixed; /* Position it in a fixed location */
+        top: 50%; /* Position it vertically in the middle */
+        left: 50%; /* Position it horizontally in the middle */
+        transform: translate(-50%, -50%); /* Center the message */
+        background-color: rgba(0, 0, 0, 0.7); /* Optional: Add a background for visibility */
+        color: white; /* Text color */
+        padding: 20px; /* Padding around the text */
+        border-radius: 5px; /* Optional: Rounded corners */
+        font-size: 18px; /* Text size */
+        z-index: 9999; /* Make sure it's above other elements */
+    }
+
+
 
 /* Mobile Styling */
 @media (max-width: 768px) {
@@ -247,7 +262,226 @@
 }
     </style>
 </head>
+<script>
+// List of fruit names
+const fruits = [
+  "Apple", "Apricot", "Avocado", "Banana", "Blackberry", "Blueberry", "Boysenberry", "Cantaloupe", "Carambola", "Cherry", "Clementine", "Coconut", "Cranberry", "Currant", "Date", "Dragonfruit", "Durian", "Elderberry", "Fig", "Gooseberry", "Grape", "Grapefruit", "Guava", "Honeydew", "IndianFig", "Jackfruit", "Jujube", "Kiwi", "Kumquat", "Lemon", "Lime", "Longan", "Lychee", "Mango", "Mangosteen", "Mulberry", "Nectarine", "Olive", "Orange", "Papaya", "PassionFruit", "Peach", "Pear", "Persimmon", "Pineapple", "Plantain", "Plum", "Pomegranate", "Pomelo", "Quince", "Raspberry", "Rambutan", "Redcurrant", "Salak", "Sapodilla", "Soursop", "StarApple", "Starfruit", "Strawberry", "Tamarind", "Tangerine", "UgliFruit", "Watermelon", "WhiteCurrant", "Wolfberry", "Yumberry", "Zucchini", "Acai", "Aronia", "Bacaba", "Bignay", "BitterMelon", "Breadfruit", "Cempedak", "Cupuacu", "Feijoa", "HalaFruit", "Illama", "Jaboticaba", "Langsat", "MameySapote", "Mamoncillo", "Marang", "MiracleFruit", "Nance", "Pequi", "Pitanga", "Pitaya", "Santol", "Sapote", "SurinamCherry", "Tepache", "Voavanga", "Yangmei", "Abiu", "Acerola", "AfricanBreadfruit", "AfricanMango", "Akee", "Ambarella", "Atemoya", "BalsamApple", "BarbadosCherry", "Bayberry", "BetelNut", "Bilberry", "BlackSapote", "Breadnut", "BuddhasHand", "Caimito", "Calamansi", "CamuCamu", "Canistel", "CapeGooseberry", "CashewApple", "Chayote", "Cherimoya", "Chokeberry", "Chontaduro", "Citron", "ClusterFig", "Cocona", "Cowa", "CustardApple", "Damson", "DesertDate", "Duku", "ElephantApple", "FingerLime", "GacFruit", "GaliaMelon", "GoldenApple", "Goumi", "GovernorPlum", "Grumichama", "HogPlum", "IceCreamBean", "IndianGooseberry", "IndianJujube", "IndianPrune", "IndianWalnut", "JamaicanPlum", "Jocote", "Kabosu", "KaffirLime", "Karkalla", "KeiApple", "Korlan", "Kutjera", "Lakoocha", "Lapsi", "Limeberry", "MacadamiaNut", "Madrono", "MalayApple", "MammeeApple", "Mangaba", "ManilaTamarind", "Marula", "Medlar", "MonkeyOrange", "MonsteraDeliciosa", "Mundu", "NatalPlum", "Noni", "OkariNut", "Pandanus", "PeachPalm", "PigeonPea", "Pitomba", "PondApple", "Pulasan", "Quandong", "RataFruit", "Rollinia", "Roselle", "Safou", "Santol", "SeaGrape", "Serviceberry", "SnowBerry", "Soncoya", "SpanishLime", "StrawberryGuava", "SugarApple", "SweetLemon", "TahitianChestnut", "TalipotPalm", "Tamarillo", "TaroFruit", "VelvetApple", "Wampee", "WaxJambu", "WhiteSapote", "WildMangosteen", "YellowDragonfruit", "YunnanHackberry", "ZabergauReinette", "ZigZagVine"
+];
 
+const AIRTABLE_API_KEY = "patUfoZ89oOXgwtyI.0d5e485cc3ffccda12fd74be277eb927ba64bfb6d12d0816d5edca16fc3cbba9";
+const AIRTABLE_BASE_ID = "appecH6fwjpP1VbFN";
+const AIRTABLE_TABLE_NAME = "Table%201";
+
+// Function to generate a random fruit-based user ID
+function generateUserId() {
+  const randomFruit = fruits[Math.floor(Math.random() * fruits.length)];
+  const uniqueNumber = Date.now().toString().slice(-6); // Adds a unique number
+  return `${randomFruit}-${uniqueNumber}`;
+}
+
+// Function to send data to Airtable and return recordId
+async function sendToAirtable(userId) {
+  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
+  
+  const data = {
+    fields: {
+      User: userId,
+      "Clicked Join Now": "no",  
+      "Clicked View Old Page": "no"
+    }
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${AIRTABLE_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      const recordId = result.id;
+      console.log("User ID sent to Airtable:", userId);
+      console.log("Saved record ID:", recordId);
+
+      // Store recordId in localStorage
+      localStorage.setItem("recordId", recordId);
+      return recordId; // Return the recordId if needed
+    } else {
+      console.error("Error sending data to Airtable:", response.status, await response.text());
+      return null;
+    }
+  } catch (error) {
+    console.error("Failed to send user ID to Airtable:", error);
+    return null;
+  }
+}
+
+// Function to update "Clicked Join Now" field in Airtable
+async function updateClickedJoinNow(recordId) {
+  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}/${recordId}`;
+  
+  const data = {
+    fields: {
+      "Clicked Join Now": "yes"
+    }
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Authorization": `Bearer ${AIRTABLE_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      console.log(`Record ${recordId} updated: Clicked Join Now = yes`);
+      return true; // Indicate success
+    } else {
+      console.error("Error updating record:", response.status, await response.text());
+      return false;
+    }
+  } catch (error) {
+    console.error("Failed to update record:", error);
+    return false;
+  }
+}
+
+// Function to update "Clicked View Old Page" field in Airtable
+async function updateClickedViewOldPage(recordId) {
+  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}/${recordId}`;
+  
+  const data = {
+    fields: {
+      "Clicked View Old Page": "yes"
+    }
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Authorization": `Bearer ${AIRTABLE_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      console.log(`Record ${recordId} updated: Clicked View Old Page = yes`);
+      return true; // Indicate success
+    } else {
+      console.error("Error updating 'Clicked View Old Page' record:", response.status, await response.text());
+      return false;
+    }
+  } catch (error) {
+    console.error("Failed to update record:", error);
+    return false;
+  }
+}
+    
+// Main logic to execute on page load
+window.onload = async () => {
+  const userId = generateUserId();
+  console.log("Generated User ID:", userId);
+
+  try {
+    const recordId = await sendToAirtable(userId);
+    if (recordId) {
+      console.log("Record successfully created with ID:", recordId);
+    } else {
+      console.error("Failed to create record");
+    }
+  } catch (error) {
+    console.error("Failed to send user ID to Airtable:", error);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Event listener for 'viewOldPageButton' (single button)
+  const button1 = document.getElementById("viewOldPageButton");
+
+  if (button1) {
+    button1.addEventListener("click", async (event) => {
+      event.preventDefault(); // Prevent default action
+
+      const recordId = localStorage.getItem("recordId");
+      const link = button1.getAttribute("data-link");
+
+      if (recordId) {
+        const success = await updateClickedViewOldPage(recordId); // Wait for the PATCH request
+        if (success) {
+          console.log("Navigating to link after updating...");
+          window.location.href = link; // Navigate to the link
+        } else {
+          alert("Failed to update record. Please try again.");
+        }
+      } else {
+        alert("Record ID not found. Unable to update.");
+      }
+    });
+  }
+
+  // Add event listener to all buttons with class 'joinNowButton'
+  const joinNowButtons = document.querySelectorAll(".joinNowButton");  // Select all buttons with the class
+
+  joinNowButtons.forEach(button => {
+    button.addEventListener("click", async (event) => {
+      event.preventDefault(); // Prevent default action
+
+      const recordId = localStorage.getItem("recordId");
+      const link = button.getAttribute("data-link");
+
+      if (recordId) {
+        const success = await updateClickedJoinNow(recordId); // Wait for the PATCH request
+        if (success) {
+          console.log("Navigating to link after updating...");
+          window.location.href = link; // Navigate to the link
+        } else {
+          alert("Failed to update record. Please try again.");
+        }
+      } else {
+        alert("Record ID not found. Unable to update.");
+      }
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".joinNowButton, .glow-button");  // Select all buttons with the classes
+
+  buttons.forEach(button => {
+    button.addEventListener("click", async (event) => {
+      event.preventDefault(); // Prevent default action
+
+      // Show the "Loading..." message
+      document.getElementById("loadingMessage").style.display = "block";
+
+      const recordId = localStorage.getItem("recordId");
+      const link = button.getAttribute("data-link");
+
+      if (recordId) {
+        const success = await updateClickedJoinNow(recordId); // Wait for the PATCH request
+        if (success) {
+          console.log("Navigating to link after updating...");
+          window.location.href = link; // Navigate to the link
+        } else {
+          alert("Failed to update record. Please try again.");
+        }
+      } else {
+        alert("Record ID not found. Unable to update.");
+      }
+    });
+  });
+});
+</script>
 <header>
 <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; vertical-align: middle;">
         <img src="MONEY_ONAIRES.png" alt="Moneyonaires Logo" style="width: 10vw; height: auto;">
@@ -255,7 +489,7 @@
         <img src="realworldlogo.webp" alt="Real World Logo" style="width: 10vw; height: auto;">
 </div>
 <div style="display: flex; justify-content: center; padding: 10px;">
-<button onclick="window.location.href='https://www.jointherealworld.com/?a=nbghtghwph';" class="glow-button" style="width: 100vw;">
+<button id="ViewOldPage" data-link="https://www.jointherealworld.com/?a=nbghtghwph" class="glow-button" style="width: 100vw;">
 Tap Here To View Original Website
 </button>
 </div>
@@ -269,9 +503,10 @@ Tap Here To View Original Website
     <h2 style="color: #DC143C;">RESIST!</h2> The matrix is stopping you from seeing this video. <h2 style="color: #DC143C;">RESIST!</h2>
     </video>
     </div>
-<button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
+<button class="joinNowButton glow-button" data-link="https://www.jointherealworld.com/checkout?a=nbghtghwph">
    Join The Real World 
 </button>
+<div id="loadingMessage" style="display:none;">Loading...</div>
 <br>
 <!--<h2>Here's what the haters say:</h2>
 <div class="slideshow-container">
@@ -333,9 +568,11 @@ Tap Here To View Original Website
         If you are making less than $10k a month online, you <b>NEED</b> <a href="https://www.jointherealworld.com/checkout?a=nbghtghwph" style="color: #ff7f00;">THE REAL WORLD.</a><br><br>
         Learn from real millionaires who teach you how to make money using techniques that work TODAY!
         <br>
-        <center><button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
-            Join The Real World 
-        </button></center>
+        <center><button class="joinNowButton glow-button" data-link="https://www.jointherealworld.com/checkout?a=nbghtghwph">
+   Join The Real World 
+</button>
+<div id="loadingMessage" style="display:none;">Loading...</div>
+</center>
     </h3>
   </div>
 </div>
@@ -351,9 +588,11 @@ Tap Here To View Original Website
         <br>
         And the list goes on...
         <br>
-        <center><button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
-            Join The Real World 
-        </button></center>
+        <center><button class="joinNowButton glow-button" data-link="https://www.jointherealworld.com/checkout?a=nbghtghwph">
+   Join The Real World 
+</button>
+<div id="loadingMessage" style="display:none;">Loading...</div>
+</center>
     </h3>
   </div>
 </div>
@@ -369,7 +608,6 @@ Tap Here To View Original Website
     <button onclick="closeDisclaimer(event)" style="padding: 10px 20px; background-color: #171419; color: white; border: none; border-radius: 5px; font-size: 16px;">Close</button>
   </div>
 </div>
-
 <script>
   // Open the disclaimer overlay
   function openDisclaimer() {
@@ -560,9 +798,10 @@ Tap Here To View Original Website
 <div id="overlay" onclick="closeOverlay(event)" style="display: none; flex-direction: column; justify-content: center; align-items: center; position: fixed; margin-bottom: 10px;">
     <img src="" alt="Enlarged Image" id="enlarged-image">
     <br>
-    <button onclick="window.location.href='https://www.jointherealworld.com/checkout?a=nbghtghwph';" class="glow-button">
-        Join The Real World 
-    </button>
+    <button class="joinNowButton glow-button" data-link="https://www.jointherealworld.com/checkout?a=nbghtghwph">
+   Join The Real World 
+</button>
+<div id="loadingMessage" style="display:none;">Loading...</div>
 </div>
 <script>
     // Select all original images
